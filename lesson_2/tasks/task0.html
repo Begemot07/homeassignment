@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 0</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Вступ до веб-програмування. Вступ до JS. Лінійні
+            алгоритми.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 0</h3>
+          <p class="page__text-task">
+            Обчислити значення виразів.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            // Вирази
+            // 1. S1=a+12+b
+            // 2. S_2=√(((a+b)/2a) )  
+            // 3. S_3=∛((a+b)c)  
+            // 4. S_4=sin⁡(a/(-b)) 
+            // -------------------------------------------
+            //  Вираз №1: S1=a+12+b
+            const a = parseInt(prompt("Введіть чило а", "5"))
+            const b = parseInt(prompt("Введіть чило b", "6"))
+
+            const sum = a + 12 + b
+            // _______________________________
+
+            //  Вираз №2: S_2=√(((a+b)/2a) )  
+            const num = 2
+
+            // Обчислюємо суму
+            const rez2 = Math.sqrt(((a + b) / (2 * a)))
+            //_________________________________
+
+            //  Вираз №3 : S_3=∛((a+b)c)  
+            const c = parseInt(prompt("Введіть чило c", "4"))
+
+            const rez3 = Math.cbrt(((a + b) * c))
+            //_________________________________
+
+            // Вираз №4: S_4=sin⁡(a/(-b)) 
+
+            const rez4 = Math.sin((a / (-b)))
+
+            //_________________________________
+
+            document.write(
+              `<pre>
+
+  Вираз №1
+            // Вхідні дані 
+            const a = ${a}
+            const b = ${b}
+
+            // Обчислюємо суму
+            const sum = a + 12 + b
+            // Виводимо результати...
+                </pre>`
+            )
+            document.write(`Результатом обчислення буде sum = <span style="color: yellow;"> ${sum}</span>.`)
+
+            document.write(
+              `<pre>
+-------------------------------------------
+  Вираз №2
+            // Вхідні дані 
+            const a = ${a}
+            const b = ${b}
+
+            // Обчислюємо 
+            const rez2 = Math.sqrt(((a + b) / (2 * a)))
+
+            // Виводимо результати...
+                </pre>`
+            )
+            document.write(`Результатом обчислення буде: "<span style="color: yellow;"> ${rez2.toFixed(2)}</span>".`)
+            document.write(
+              `<pre>
+-------------------------------------------
+  Вираз №3
+            // Вхідні дані 
+            const a = ${a}
+            const b = ${b}
+            const c = ${c}
+
+            // Обчислюємо 
+            const rez3 = Math.cbrt(((a + b) * c))
+
+            // Виводимо результати...
+                </pre>`
+            )
+            document.write(`Результатом обчислення буде: "<span style="color: yellow;"> ${rez3.toFixed(2)}</span>".`)
+            document.write(
+              `<pre>
+-------------------------------------------
+  Вираз №4
+            // Вхідні дані 
+            const a = ${a}
+            const b = ${b}
+            
+
+            // Обчислюємо 
+            const rez4 = Math.sin((a / (-b)))
+
+            // Виводимо результати...
+                </pre>`
+            )
+            document.write(`Результатом обчислення буде: "<span style="color: yellow;"> ${rez4.toFixed(2)}</span>".`)
+          </script>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
