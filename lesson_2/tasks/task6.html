@@ -77,19 +77,11 @@
             document.write(
               `<table style='border:1px solid #fff' >
                 <tr>
-                  <th  style="padding-right: 15px; text-align: left">Вартіть упаковки</th>
-                  <td> ${costGood.toFixed(2)}₴</td>
+                  <th  style="padding-right: 15px; text-align: left">Товар</th>
+                  <td> ${quantity}шт * ${costGoodsPerOne.toFixed(2)}₴</td>
                 </tr>
                 <tr>
-                  <th  style="padding-right: 15px; text-align: left">Вартіть одного товару</th>
-                  <td> ${costGoodsPerOne.toFixed(2)}₴</td>
-                </tr>
-                <tr>
-                  <th  style="padding-right: 15px; text-align: left">Кількість упаковок</th>
-                  <td> ${quantity},шт</td>
-                </tr>
-                  <tr>
-                  <th  style="padding-right: 15px; text-align: left">Вартість всього:</th>
+                  <th  style="padding-right: 15px; text-align: left">Всього:</th>
                   <td> ${costAllOfGoods.toFixed(2)}₴</td>
                 </tr>
               </table>`
