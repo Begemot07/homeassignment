@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 4</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Вступ до веб-програмування. Вступ до JS. Лінійні
+            алгоритми.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 1</h3>
+          <p class="page__text-task">
+            Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            //Вносимо вихідні дані
+            const lengthСentimeters = parseFloat(prompt("Введіть довжину в сантиметрах", '154'))
+
+            // Переводимо сантиметри в метри
+            const lengthMeters = lengthСentimeters / 100
+
+            // Переводимо сантиметри в кілометри
+            const lengthKiloMeters = lengthСentimeters / 100000
+            // Виводимо результати...
+            document.write(
+              `<pre> 
+            //Вносимо вихідні дані
+                const lengthСentimeters = parseFloat(prompt("Введіть довжину в сантиметрах", '154'))
+
+            // Переводимо сантиметри в метри
+                const lengthMeters = lengthСentimeters / 100
+
+            // Переводимо сантиметри в кілометри
+                const lengthKiloMeters = lengthСentimeters / 100000
+
+            // Виводимо результати...
+                </pre>`
+            )
+            document.write(`<p>${lengthСentimeters} сантиметрів це - ${lengthKiloMeters} кілометрів та ${lengthMeters} метрів</p>`)
+          </script>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
