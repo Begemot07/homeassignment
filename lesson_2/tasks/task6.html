@@ -56,6 +56,16 @@
             // Проводимо розрахунки
 
             //вартість одного товару
+           const costAllOfGoods = quantity * costGoodsPerOne * 3
+            document.write(
+              `<pre>
+             // Отримуємо вхідні дані 
+            const costGood = parseFloat(prompt("Введіть вартість товару за упаковку (3шт), ₴", '1.5'))
+            const quantity = parseInt(prompt("Введіть кількість упаковок товару, шт", '13'))
+
+            // Проводимо розрахунки
+
+            //вартість одного товару
             const costGoodsPerOne = costGood / 3
             
             // Загальна вартість
@@ -68,11 +78,11 @@
               `<table style='border:1px solid #fff' >
                 <tr>
                   <th  style="padding-right: 15px; text-align: left">Вартіть упаковки</th>
-                  <td> ${costGood}₴</td>
+                  <td> ${costGood.toFixed(2)}₴</td>
                 </tr>
                 <tr>
                   <th  style="padding-right: 15px; text-align: left">Вартіть одного товару</th>
-                  <td> ${costGoodsPerOne}₴</td>
+                  <td> ${costGoodsPerOne.toFixed(2)}₴</td>
                 </tr>
                 <tr>
                   <th  style="padding-right: 15px; text-align: left">Кількість упаковок</th>
@@ -80,7 +90,7 @@
                 </tr>
                   <tr>
                   <th  style="padding-right: 15px; text-align: left">Вартість всього:</th>
-                  <td> ${costAllOfGoods}₴</td>
+                  <td> ${costAllOfGoods.toFixed(2)}₴</td>
                 </tr>
               </table>`
             )
