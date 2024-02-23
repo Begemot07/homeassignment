@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 2</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Арифметичні і логічні вирази. Реалізація алгоритмів з
+            розгалуженням.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 2</h3>
+          <p class="page__text-task">
+            З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то
+            відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею
+            за 4 грн.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <script>
+            //Отримуємо вхідні дані
+            const goodCost = parseFloat(prompt("Введіть ціну товару", '3.5грн'))
+            const currentAmount = parseFloat(prompt("Введіть наявну суму коштів", '20грн'))
+            const costLottery = 4
+            // Проводимо розрахунки
+            const rest = currentAmount - goodCost
+            if (goodCost > currentAmount)
+              document.write('Нажаль, у Вас не вистачає коштів.')
+
+            else if (currentAmount - goodCost >= costLottery)
+              document.write('Чи не бажаєте викинути гроші на лотарею?')
+
+            else document.write(`Дякуємо за покупку! Ось ваша решта ${rest.toFixed(2)}грн`)
+
+            document.write(
+              `<pre> 
+            //Отримуємо вхідні дані
+
+            const goodCost = parseFloat(prompt("Введіть ціну товару", '3.5грн'))
+            const currentAmount = parseFloat(prompt("Введіть наявну суму коштів", '20грн'))
+            const costLottery = 4
+
+            // Проводимо розрахунки
+
+            const rest = currentAmount - goodCost
+            
+            if (goodCost > currentAmount)
+              document.write('Нажаль, у Вас не вистачає коштів.')
+
+            else if (currentAmount - goodCost >= costLottery)
+              document.write('Чи не бажаєте викинути гроші на лотарею?')
+
+            else document.write(\`Дякуємо за покупку! Ось ваша решта ${rest.toFixed(2)}грн\`)
+            
+          </pre>`
+            )
+          </script>
+
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
