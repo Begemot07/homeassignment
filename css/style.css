@@ -41,7 +41,6 @@ body {
     gap: 25px;
     align-items: center;
     justify-content: space-between;
-
   }
 }
 
@@ -72,7 +71,6 @@ body {
 
 .page--margin {
   margin-bottom: clamp(40px, calc(40px + (60 - 40) * ((100vw - 320px) / (1270 - 320))), 60px);
-
 }
 
 .page__list {}
@@ -100,7 +98,6 @@ body {
   color: #FFFF00;
   text-decoration: underline;
   outline: 1px solid #FF0000;
-
 }
 
 .footer {
@@ -111,8 +108,6 @@ body {
   font-size: 18px;
   color: #404040;
 }
-
-
 .page__list-task {}
 
 .page__item {}
@@ -133,15 +128,17 @@ body {
   color: #FFFF00;
   text-decoration: underline;
   outline: 1px solid #FF0000;
-
 }
 
 .page__description-task {
   color: #C0C0C0;
   max-width: 600px;
-
 }
-
+.page__link-task:hover {
+  color: #FFFF00;
+  text-decoration: underline;
+  outline: 1px solid #FF0000;
+}
 .page__text-task {
   color: #C0C0C0;
   font-size: 18px;
@@ -157,8 +154,6 @@ pre {
   font-size: 18px;
   overflow: auto;
 }
-
-
 
 .page__coments {
   margin: 22px 0;
