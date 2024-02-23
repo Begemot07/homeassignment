@@ -86,6 +86,8 @@ body {
   color: #0000FF;
   margin-bottom: 20px;
   font-weight: 700;
+  display: flex;
+  gap: 15px;
 }
 .page__title-item::before {
   flex-shrink: 0;
