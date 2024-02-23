@@ -87,7 +87,16 @@ body {
   margin-bottom: 20px;
   font-weight: 700;
 }
-
+.page__title-item::before {
+  flex-shrink: 0;
+  margin-top: clamp(2px, calc(2px + (7 - 2) * ((100vw - 320px) / (1270 - 320))), 7px);
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #00FF00;
+  border-radius: 50%;
+  box-shadow: 0px 0px 7px 1px #00FF00;
+}
 .page__link {
   color: #00FF00;
   text-decoration: underline;
@@ -124,11 +133,6 @@ body {
   padding: 10px 15px;
 }
 
-.page__link-task:hover {
-  color: #FFFF00;
-  text-decoration: underline;
-  outline: 1px solid #FF0000;
-}
 
 .page__description-task {
   color: #C0C0C0;
