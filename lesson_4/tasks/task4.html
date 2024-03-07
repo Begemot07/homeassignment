@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 4</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Арифметичні і логічні вирази. Реалізація алгоритмів з
+            розгалуженням.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 1</h3>
+          <p class="page__text-task">
+            З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку,
+            школярем, студентом, працівником, пенсіонером).
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            //Вносимо вихідні дані
+
+            const enterAge = parseInt(prompt("Введіть вік людини в роках", '5'))
+            let result
+
+            // Обробляємо результати
+
+            if (enterAge < 3)
+              result = 'Ще росте малеча!'
+
+            else if (enterAge < 6)
+              result = ' ходить до дитсадочку'
+
+            else if (enterAge < 18)
+              result = 'ходить до школи'
+
+            else if (enterAge < 24)
+              result = 'є студентом'
+
+            else if (enterAge < 65)
+              result = 'є працівником'
+
+            else
+              result = `пенсіонер`
+
+            document.write(`Вік ${enterAge} роки(ів) свідчить, що людина ${result}`)
+
+            document.write(
+              `<pre> 
+            //Вносимо вихідні дані
+
+            const enterAge = parseInt(prompt("Введіть вік людини в роках", '5'))
+            let result
+
+            // Обробляємо результати
+
+            if (enterAge < 3)
+              result = 'Ще росте малеча!'
+
+            else if (enterAge < 6)
+              result = ' ходить до дитсадочку'
+
+            else if (enterAge < 18)
+              result = 'ходить до школи'
+
+            else if (enterAge < 24)
+              result = 'є студентом'
+
+            else if (enterAge < 65)
+              result = 'є працівником'
+
+            else
+              result = 'пенсіонер'
+
+            document.write(\`Вік ${enterAge} роки(ів) свідчить, що людина ${result}\`)
+                </pre>`
+            )
+          </script>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
