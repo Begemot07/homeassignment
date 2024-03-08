@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 12</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Цикли. "for", "while", "do while"</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 12</h3>
+          <p class="page__text-task">
+            Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції
+            вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш
+            користувача (три перших зображення 100 грн,
+            три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати
+            цикли і switch (для вибору зображення за номером).
+
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <script>
+            let countWinNumber1 = 0
+            let countWinNumber2 = 0
+            let countWinNumber3 = 0
+            let countWinNumber4 = 0
+            let randomNum
+            document.write(`
+            <div class="box">
+              <div class="win">Виграш: <span class="win-number">0</span>₴</div>
+              <div class="box__body">`)
+
+            for (let i = 1; i <= 3; i++) {
+              randomNum = 1 + Math.floor(Math.random() * 4)
+              // if (randomNum === 1) countWinNumber1++
+              // else if (randomNum === 2) countWinNumber2++
+              // else if (randomNum === 3) countWinNumber3++
+              // else if (randomNum === 4) countWinNumber4++
+              switch (randomNum) {
+                case 1:
+                  countWinNumber1++
+                  break;
+                case 2:
+                  countWinNumber2++
+                  break;
+                case 3:
+                  countWinNumber3++
+                  break;
+                case 4:
+                  countWinNumber4++
+                  break;
+              }
+              document.write(`
+            <div class="img-wrap">
+                <img src="../img/${randomNum}.svg" alt="fruits" class="img-wrap__image">
+            </div>`)
+            }
+
+            document.write(`
+                </div>
+              <button class="button">Start</button>
+              </div>`)
+            // ---------------------------------------------------
+            const winText = document.querySelector('.win-number')
+            // if (countWinNumber1 === 3)
+            //   winText.innerHTML = '100'
+
+            // if (countWinNumber2 === 3)
+            //   winText.innerHTML = '200'
+
+            // if (countWinNumber3 === 3)
+            //   winText.innerHTML = '500'
+
+            // if (countWinNumber4 === 3)
+            //   winText.innerHTML = '1000'
+            switch (3) {
+              case countWinNumber1:
+                winText.innerHTML = '100'
+                break;
+              case countWinNumber2:
+                winText.innerHTML = '200'
+                break;
+              case countWinNumber3:
+                winText.innerHTML = '500'
+                break;
+              case countWinNumber4:
+                winText.innerHTML = '1000'
+                break;
+
+            }
+            const btn = document.querySelector('.button')
+            btn.addEventListener('click', reloadFunk)
+            function reloadFunk() {
+              location.reload()
+            }
+
+          </script>
+
+          <style>
+            .box {
+              background: #404040;
+              max-width: 450px;
+              margin: 0 auto;
+              border-radius: 15px;
+              display: flex;
+              justify-content: center;
+              flex-direction: column;
+              align-items: center;
+              padding: 20px;
+              background: linear-gradient(90deg, rgba(226, 252, 0, 1) 0%, rgba(29, 253, 58, 1) 50%, rgba(69, 252, 244, 1) 100%);
+            }
+
+            .win {
+              padding: 10px 20px 0px 10px;
+              font-weight: 700;
+              color: #00FF00;
+              background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+              text-shadow: 0px 1px 3px #bbbbbb;
+              border-radius: 10px 10px 0px 0px;
+              font-size: 24px;
+              position: relative;
+              margin-bottom: 25px;
+            }
+
+            .win::after {
+              content: '';
+              position: absolute;
+              top: 100%;
+              left: 0;
+              width: 100%;
+              height: 10px;
+              background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+              animation: line 1.7s alternate infinite;
+              border-radius: 0px 0px 10px 10px;
+            }
+
+            .win-number {
+              color: #FFFF00;
+            }
+
+            .box__body {
+              padding: 20px;
+              display: flex;
+              gap: 20px;
+              justify-content: space-between;
+              box-shadow: inset 0px 0px 3px 2px #5c5c5c;
+              margin-bottom: 15px;
+              border-radius: 10px;
+              background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+            }
+
+            .img-wrap {
+              flex: 0 1 100px;
+              box-shadow: 0px 0px 3px 2px #5c5c5c;
+              padding: 5px;
+              overflow: hidden;
+              border-radius: 10px;
+              background-color: #C0C0C0;
+
+            }
+
+            .img-wrap__image {
+              width: 100%;
+              height: 100%;
+              aspect-ratio: 1/1;
+              object-fit: cover;
+              animation: spin 0.7s;
+            }
+
+            @keyframes line {
+              0% {
+                width: 0;
+                left: 50%;
+              }
+
+              100% {
+                width: 100%;
+                left: 0%;
+              }
+            }
+
+
+
+            @keyframes spin {
+              0% {
+                transform: translate(0%);
+              }
+
+              25% {
+                transform: translate(0%, 120%);
+              }
+
+              50% {
+                transform: translate(-120%, 120%);
+              }
+
+              55% {
+                transform: translate(-120%, -120%);
+              }
+
+              60% {
+                transform: translate(0, -120%);
+              }
+
+              100% {
+                transform: translate(0, 0%);
+              }
+
+            }
+
+            .button {
+              padding: 15px 30px;
+              background-color: #C0C0C0;
+              color: #0000FF;
+              border-radius: 10px;
+              text-transform: uppercase;
+              font-weight: 700;
+              font-size: 22px;
+              transition: all 0.3s;
+            }
+
+            .button:hover {
+              padding: 15px 30px;
+              background-color: #FFFF00;
+              color: #0000FF;
+              border-radius: 10px;
+
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

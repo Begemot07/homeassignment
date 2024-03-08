@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 13</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Цикли. "for", "while", "do while"</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 13</h3>
+          <p class="page__text-task">
+            Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M.
+            Маючи К снарядів користувач намагається потопити корабель.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            В тебе 5 спроб попасти, тицяй в квадрати:
+          </p>
+
+          <div class="field">
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+
+            <div class="cell"></div>
+          </div>
+          <script>
+            // const rowNum = 5
+            // const columnNum = 4
+
+            // let randomRowNum = 1 + (Math.floor(Math.random() * 5))
+            // let randomColumnNum = 1 + (Math.floor(Math.random() * 4))
+
+            // for (let k = 0; k < 3; k++) {
+            //   let userRowNum = parseInt(prompt('Позиція корабля горизонт:', '2'))
+            //   let userColumnNum = parseInt(prompt('Позиція корабля вертикаль:', '3'))
+
+            //   if (randomRowNum === userRowNum && randomColumnNum === userColumnNum) { alert('Super!!'); break }
+            //   else alert('sorry')
+            // }
+            // document.write(`Позиція корабля вертикаль: ${randomColumnNum} , горизонт: ${randomRowNum}`)
+
+            let clickCount = 0
+            let cellField = document.querySelectorAll('.cell')
+            cellField.forEach((el, index) => {
+              el.setAttribute('data-square', `${index + 1}`)
+
+              el.addEventListener('click', shotFunc)
+              function shotFunc() {
+                clickCount++
+                if (clickCount === 6) {
+                  alert('Не вистачило спроб')
+                  location.reload()
+                }
+                el.style.backgroundColor = '#404040';
+                let randomPosition = 1 + Math.floor(Math.random() * 20)
+                if (randomPosition === index + 1 && clickCount < 6) {
+                  alert('Попав!');
+                  el.style.background = `url('../img/ship.svg')`;
+                  window.setTimeout(() => { location.reload() }, 1000)
+                }
+              }
+            })
+
+          </script>
+
+          <style>
+            .field {
+              display: grid;
+              grid-template-columns: repeat(5, 100px);
+              gap: 20px;
+              overflow: auto;
+              justify-content: center;
+            }
+
+
+
+            .cell {
+              width: 100px;
+              height: 100px;
+              background-color: #0000FF;
+              box-shadow: inset 0px 0px 7px 3px #ffffff;
+              overflow: hidden;
+            }
+
+            @media (max-width:650.98px) {
+              .field {
+                display: grid;
+                gap: 10px;
+                grid-template-columns: repeat(5, 65px);
+              }
+
+              .cell {
+                width: 50px;
+                height: 50px;
+              }
+            }
+
+            @media (max-width:400.98px) {
+              .field {
+                display: grid;
+                grid-template-columns: repeat(4, 20%);
+              }
+
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
