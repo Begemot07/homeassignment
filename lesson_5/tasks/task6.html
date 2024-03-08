@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 6</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Цикли. "for", "while", "do while"</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 6</h3>
+          <p class="page__text-task">
+            Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            let numCeil = 0
+            document.write('<div class="table-wrap">')
+            for (let table = 0; table < 3; table++) {
+              document.write(`<table> <caption>Table ${table + 1}</caption>`)
+              for (let tr = 0; tr < 3; tr++) {
+                document.write('<tr>')
+                for (let td = 0; td < 3; td++) {
+                  numCeil++
+                  document.write(`<td>${numCeil}</td>`)
+                }
+                document.write('</tr>')
+              }
+              document.write('</table>')
+            }
+            document.write('</div>')
+          </script>
+          <style>
+            caption {
+              margin-bottom: 15px;
+              color: #00FF00;
+            }
+
+            .table-wrap {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 50px;
+            }
+
+            table {
+              border: 1px solid #C0C0C0;
+            }
+
+            td {
+              font-size: 20px;
+              padding: 10px;
+              border: 1px solid #0000FF;
+              box-shadow: 0px 0px 6px 2px #0000FF;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
