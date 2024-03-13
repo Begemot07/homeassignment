@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 4</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Functions</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 4</h3>
+          <p class="page__text-task">
+            Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів:
+            кількість парних, кількість додатних, кількість більших за 100.
+          </p>
+
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            function findEvenPositiveGreater100(num1, num2, num3) {
+              let evenNum = 0
+              let positiveNum = 0
+              let greater100Num = 0
+              for (let i = 0; i < 3; i++) {
+                const num = arguments[i]
+                if (num > 0) positiveNum++
+                if (num % 2 === 0) evenNum++
+                if (num > 100) greater100Num++
+              }
+              return `Кількість парних чисел: ${evenNum},<br> кількість додатних: ${positiveNum},<br>кількість більших за 100: ${greater100Num}.`
+            }
+            let num1 = parseFloat(prompt('Число №1:', '4'))
+            let num2 = parseFloat(prompt('Число №2:', '-3'))
+            let num3 = parseFloat(prompt('Число №3:', '111'))
+            let res = findEvenPositiveGreater100(num1, num2, num3)
+
+            document.write(res)
+          </script>
+          <style>
+            div {
+              color: #00FF00;
+              font-size: 24px;
+
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

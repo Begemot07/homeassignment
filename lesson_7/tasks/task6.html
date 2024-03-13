@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 6</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="imgLink">
+          </a>
+          <h1 class="header__title">Functions</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 6</h3>
+          <p class="page__text-task">
+            Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та
+            посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у
+            середині тега a: \<a>
+              <\img src=”шлях”\> \
+            </a>`
+
+          </p>
+
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            function getRandomimgLink(imgLink, title,) {
+              let htmlElement = `<div>`
+              htmlElement += `<h2 class='img-bg' style="background: url('${imgLink}') 0 0 / cover  no-repeat;"  >${title}</h2>`
+              htmlElement += `<a target='_blanc' class="imgLink-link" href='${imgLink}'> Link</a>`
+              htmlElement += `</div>`
+              return htmlElement
+            }
+
+            const imgLink = prompt('Посилання на зображення', 'https://d.newsweek.com/en/full/2073469/photo-ted-dog.jpg')
+
+            const title = prompt('Введіть заголовок', 'Your title')
+            let banner = getRandomimgLink(imgLink, title)
+            document.write(banner)
+          </script>
+          <style>
+            span {
+              color: #00FF00;
+            }
+
+            div {
+              font-size: 24px;
+            }
+
+            .img-bg {
+              width: 400px;
+              height: auto;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #00FF00;
+              font-weight: 700;
+              margin-bottom: 25px;
+              aspect-ratio: 3/2;
+              font-size: 45px;
+              text-shadow: 0px 0px 14px #000;
+              border-radius: 14px;
+            }
+
+            .imgLink-link {
+              padding: 15px 30px;
+              background-color: #C0C0C0;
+              color: #00FF00;
+              text-transform: uppercase;
+              text-shadow: 0px 2px 3px #000;
+              border-radius: 10px;
+              transition: all 0.3s;
+            }
+
+            .imgLink-link:hover {
+              text-shadow: 0px 0px 6px #00FF00;
+              background-color: #3e3e3e;
+
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

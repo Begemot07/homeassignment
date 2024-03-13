@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 2</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Functions</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 2</h3>
+          <p class="page__text-task">
+            Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+          </p>
+
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            function isWorkday(numDay) {
+              let res = 'Спробуй від 1 до 7'
+              if (numDay <= 5)
+                res = 'Це робочий день!'
+              else if (numDay <= 7)
+                res = 'Це вихідний'
+              return res
+            }
+            let numDay = parseInt(prompt("Номер дня:", '3'))
+            let workDayNum = isWorkday(numDay)
+            document.write(workDayNum)
+          </script>
+          <style>
+            div {
+              color: #00FF00;
+              font-size: 24px;
+
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

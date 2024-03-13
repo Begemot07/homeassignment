@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 5</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Functions</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 5</h3>
+          <p class="page__text-task">
+            Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця
+            заповнюється заданим фіксованим повідомленням).
+          </p>
+
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            function createTable(rows, columns) {
+              let elHtml = `<table> <caption>Таблиця на ${rows} рядків та ${columns} стовпчиків</caption>`
+              for (let i = 0; i < rows; i++) {
+                elHtml += `<tr>`
+                for (let j = 0; j < columns; j++) {
+                  elHtml += `<td>Hello</td>`
+                }
+                elHtml += '</tr>'
+
+              }
+              elHtml += `</table>`
+              return elHtml
+            }
+            // let numberMonth = parseInt(prompt('Введіть номер місяця від 1 до 12:', '1'))
+            let rows = parseInt(prompt('rows', '3'))
+            let columns = parseInt(prompt('columns', '4'))
+            let table = createTable(rows, columns)
+            document.write(table)
+          </script>
+          <style>
+            div {
+              font-size: 24px;
+            }
+
+            table,
+            td {
+              color: #00FF00;
+              border: 1px solid #0000FF;
+              padding: 5px;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

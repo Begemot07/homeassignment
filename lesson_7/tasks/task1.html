@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 1</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Functions</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 1</h3>
+          <p class="page__text-task">
+            Створити функцію, яка за номером місяця повертає його назву.
+          </p>
+
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            function getNameMonth(numberMonth) {
+              let month
+              switch (numberMonth) {
+                case 1: month = 'Січень'
+                  break;
+                case 2: month = 'Лютий'
+                  break;
+                case 3: month = 'Березень'
+                  break;
+                case 4: month = 'Квітень'
+                  break;
+                case 5: month = 'Травень'
+                  break;
+                case 6: month = 'Червень'
+                  break;
+                case 7: month = 'Липень'
+                  break;
+                case 8: month = 'Серпень'
+                  break;
+                case 9: month = 'Вересень'
+                  break;
+                case 10: month = 'Жовтень'
+                  break;
+                case 11: month = 'Листопад'
+                  break;
+                case 12: month = 'Грудень'
+                  break;
+              }
+              return month
+            }
+            let numberMonth = parseInt(prompt('Введіть номер місяця від 1 до 12:', '1'))
+            let res = getNameMonth(numberMonth)
+            document.write(`<div> Число <span> ${numberMonth}</span>  це місяць <span>${res}.</div>`)
+          </script>
+          <style>
+            span {
+              color: #00FF00;
+            }
+
+            div {
+              font-size: 24px;
+
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

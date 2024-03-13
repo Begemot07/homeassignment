@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 3</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Functions</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 3</h3>
+          <p class="page__text-task">
+            Створити окремі функції, які для 4 чисел знаходять:
+            1)суму;
+            2)добуток;
+            3)середнє арифметичне;
+            4)мінімальне значення.
+
+          </p>
+
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            function getSum(num1, num2, num3) {
+              return num1 + num2 + num3
+            }
+            function getMult(num1, num2, num3) {
+              return num1 * num2 * num3
+            }
+            function getAverage(num1, num2, num3) {
+              return (num1 + num2 + num3) / 3
+            }
+            function getMinNum(num1, num2, num3) {
+              return Math.min(num1, num2, num3)
+            }
+            let num1 = parseFloat(prompt("Число №1", '2'))
+            let num2 = parseFloat(prompt("Число №2", '4'))
+            let num3 = parseFloat(prompt("Число №3", '7'))
+
+            let sum = getSum(num1, num2, num3)
+            let multiple = getMult(num1, num2, num3)
+            let average = getAverage(num1, num2, num3)
+            let minNum = getMinNum(num1, num2, num3)
+
+            document.write(`Сума: ${num1} + ${num2} + ${num3} = ${sum} <br>`)
+            document.write(`Добуток: ${num1} * ${num2} * ${num3} = ${multiple} <br>`)
+            document.write(`Середнє арифметичне: (${num1} + ${num2} + ${num3}) : 3 = ${average.toFixed(1)} <br>`)
+            document.write(`Мінімальне значення: ${num1}, ${num2}, ${num3} => ${minNum}`)
+          </script>
+          <style>
+            div {
+              color: #00FF00;
+              font-size: 24px;
+
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
