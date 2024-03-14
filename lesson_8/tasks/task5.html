@@ -49,7 +49,7 @@
             for (let i = 0; i < inputUserShips; i++) {
               let randomPosition = 0 + Math.floor(Math.random() * inputUserNumCells)
               userNumCellsArray[randomPosition] = 1
-              if (userNumCellsArray[i] === 1) {
+              if (userNumCellsArray[randomPosition] === 1) {
                 randomPosition = 0 + Math.floor(Math.random() * inputUserNumCells)
                 userNumCellsArray[randomPosition] = 1
               }
@@ -64,9 +64,10 @@
             while (countKills < inputUserShips) {
               userShot = parseInt(prompt(`Постріл: ${userShotCount}`,))
               if (1 === userNumCellsArray[userShot - 1]) {
-                alert('Попав!')
+                userNumCellsArray[userShot - 1] = 0
                 countKills++
-              }
+                alert('Попав!')
+              } else { alert('Промазав') }
               userShotCount++
               if (countKills === inputUserShips) {
                 document.write(`Потоплені усі  кораблі! Було  всього: ${inputUserShips}`)
