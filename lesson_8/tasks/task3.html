@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 3</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Arrays</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 3</h3>
+          <p class="page__text-task">
+            Задача 6. Дано послідовність цін товарів та назв (у окремих масивах). Вивести на
+            екран ті, які може собі дозволити користувач (кількість грошей задається). <br>
+            Приклад збереження даних: <br>
+            let productsPrices = [1000, 20, 31] <br>
+            let productsTitles = [‘cheese’, ‘juice’, ‘bread’]
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            const productsPrices = [1000, 20, 31, 65, 57, 36, 270]
+            const productsTitles = ['cheese', 'juice', 'bread', 'eggs', 'milk', 'apples', 'meat']
+            let userCArt = []
+            try {
+              const userMoney = parseFloat(prompt('Enter your amount of money', '250'))
+              if (isNaN(userMoney)) {
+                throw new Error('<span class="error-massege">Не коректне значення!')
+              }
+
+              for (let i = 0; i < productsPrices.length; i++) {
+                if (productsPrices[i] <= userMoney) {
+                  userCArt.push(productsTitles[i])
+                }
+              }
+              document.write(`Goods that can be purchased:<span> ${userCArt}.</span>`)
+            } catch (error) {
+              document.write(error.message)
+            }
+          </script>
+          <style>
+            div {
+              font-size: 24px;
+            }
+
+            span {
+              color: #00FF00;
+            }
+
+            .error-massege {
+              color: #FF0000;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

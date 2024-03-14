@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 5</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Arrays</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 5</h3>
+          <p class="page__text-task">
+            Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та
+            кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві
+            по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там
+            є корабель). Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих
+            пір, поки не будуть потоплені усі кораблі.
+          </p>
+
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            let inputUserNumCells = parseInt(prompt('Кількість клітинок:', '5'))
+            let inputUserShips = parseInt(prompt('Кількість кораблів:', '3'))
+            let userNumCellsArray = []
+
+            for (let i = 0; i < inputUserNumCells; i++) {
+              userNumCellsArray.push(0)
+            }
+
+            for (let i = 0; i < inputUserShips; i++) {
+              let randomPosition = 0 + Math.floor(Math.random() * inputUserNumCells)
+              userNumCellsArray[randomPosition] = 1
+              if (userNumCellsArray[i] === 1) {
+                randomPosition = 0 + Math.floor(Math.random() * inputUserNumCells)
+                userNumCellsArray[randomPosition] = 1
+              }
+            }
+
+            console.log(userNumCellsArray);
+
+            let countKills = 0
+            let userShot
+            let userShotCount = 1
+
+            while (countKills < inputUserShips) {
+              userShot = parseInt(prompt(`Постріл: ${userShotCount}`,))
+              if (1 === userNumCellsArray[userShot - 1]) {
+                alert('Попав!')
+                countKills++
+              }
+              userShotCount++
+              if (countKills === inputUserShips) {
+                document.write(`Потоплені усі  кораблі! Було  всього: ${inputUserShips}`)
+              }
+            }
+          </script>
+          <style>
+            div {
+              font-size: 24px;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
