@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 7</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Arrays. Methods of arrays.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 7</h3>
+          <p class="page__text-task">
+            Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати
+            30% знижки.
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            function createListRandomNum(min, max, length) {
+              let arrRandomNumbers = []
+              for (let i = 0; i < length; i++) {
+                let randomNum = min + Math.floor(Math.random() * (max - min + 1))
+                arrRandomNumbers.push(randomNum)
+              }
+              return arrRandomNumbers
+            }
+            //_________________________________________
+            let numbersList = createListRandomNum(300, 4300, 10)
+            document.write(`<br>Before: [${numbersList}]`)
+
+            numbersList.forEach((e, i, a) => {
+              if (e > 1000) a[i] = (a[i] * 0.7).toFixed(0)
+              console.log(a[i]);
+            })
+            document.write(` <br>After: [${numbersList}]`)
+          </script>
+          <style>
+            div {
+              font-size: 24px;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

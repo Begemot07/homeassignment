@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 3</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Arrays. Methods of arrays.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 3</h3>
+          <p class="page__text-task">
+            Користувач вводить кількість елементів. Створити масив, у якому перші 5 елементів
+            заповнені 1-цями, а інші до кінця масиву заповнені 7-ками.
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            const inptutNumOfList = parseInt(prompt("Кількість елементів", '9'))
+            const createList = new Array(inptutNumOfList)
+
+            createList.fill(1, 0, 5)
+            createList.fill(7, 5)
+
+            document.write(`const createList = [${createList}]`)
+          </script>
+          <style>
+            div {
+              font-size: 24px;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
