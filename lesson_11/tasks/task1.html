@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 1</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Arrays. Methods of arrays. Part 3. Multidimensional Array. </h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 1</h3>
+          <p class="page__text-task">
+            <span>Знайти суми елементів у вказаній області:</span>
+            <br>
+            1. Номери рядків від 0 до половини, стовпці від 0 до половини<br>
+            2. Номери рядків від 0 до половини, стовпці від половини до кінця<br>
+            3.Номери рядків від половини до кінця, стовпці від 0 до половини<br>
+            4. Номери рядків від половини до кінця , стовпці від половини до кінця<br>
+            5. Суму парних рядків<br>
+            6. Суму непарних стовпців<br>
+            7. У парних рядках – непарні стовпці, у непарних – парні.<br>
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            let arr = [
+              [16, 52, 33, 14],
+              [52, 7, 34, 74],
+              [11, 84, 3, 46],
+              [71, 66, 38, 44]
+            ]
+            let sum = 0
+            let halfArr = arr.slice(0, Math.floor(arr.length / 2))
+            // 1. Номери рядків від 0 до половини, стовпці від 0 до половини:
+
+            // for (let row = 0; row < halfArr.length; row++) {
+            //   let halfRow = halfArr[row].slice(0, halfArr[row].length / 2)
+            //   console.log(halfRow);
+            //   for (let column = 0; column < halfRow.length; column++) {
+            //     sum += halfRow[column]
+            //   }
+            // }
+            //============================================================
+
+            // 2. Номери рядків від 0 до половини, стовпці від половини до кінця<br>
+
+            // for (let row = 0; row < halfArr.length; row++) {
+            //   let secondHalfRow = halfArr[row].slice(halfArr[row].length / 2, halfArr[row].length)
+            //   console.log(secondHalfRow);
+            //   for (let column = 0; column < secondHalfRow.length; column++) {
+            //     sum += secondHalfRow[column]
+            //     console.log(secondHalfRow[column]);
+            //   }
+            // }
+            //============================================================
+
+            // 3.Номери рядків від половини до кінця, стовпці від 0 до половини
+
+            // for (let row = halfArr.length; row < arr.length; row++) {
+            //   let halfRow = arr[row].slice(0, arr[row].length / 2)
+            //   for (let column = 0; column < halfRow.length; column++) {
+            //     sum += halfRow[column]
+            //   }
+            // }
+            //============================================================
+
+            // 4. Номери рядків від половини до кінця , стовпці від половини до кінця
+
+            // for (let row = halfArr.length; row < arr.length; row++) {
+            //   let halfRow = arr[row].slice(arr[row].length / 2, arr[row].length)
+            //   for (let column = 0; column < halfRow.length; column++) {
+            //     sum += halfRow[column]
+            //   }
+            // }
+            //============================================================
+
+            // 5. Суму парних рядків
+
+            // for (let row = 0; row < arr.length; row += 2) {
+            //   for (let column = 0; column < arr[row].length; column++) {
+            //     sum += arr[row][column]
+            //   }
+            // }
+            //============================================================
+
+            // 6. Суму непарних стовпців
+
+            // for (let row = 0; row < arr.length; row++) {
+            //   for (let column = 1; column < arr[row].length; column += 2) {
+            //     sum += arr[row][column]
+            //   }
+            // }
+            //============================================================
+
+            // 7. У парних рядках – непарні стовпці, у непарних – парні:
+            for (let row = 0; row < arr.length; row += 2) {
+              const rowArr = arr[row];
+              for (let column = 1; column < rowArr.length; column += 2) {
+                sum += arr[row][column];
+              }
+            }
+            document.write(`${sum}<br>`)
+            for (let row = 1; row < arr.length; row += 2) {
+              const rowArr = arr[row];
+              for (let column = 0; column < rowArr.length; column += 2) {
+                sum += arr[row][column];
+              }
+            }
+            document.write(sum)
+          </script>
+          <style>
+            div {
+              font-size: 24px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
