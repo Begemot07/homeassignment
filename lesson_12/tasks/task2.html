@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 2</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Arrays. Sorting arrays </h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 2</h3>
+          <p class="page__text-task">
+            Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь
+            чисел під час сортування змішуванням.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+          <script>
+            function createArray(length) {
+              let numList = []
+              for (let i = 0; i < length; i++) {
+                let randomNum = 1 + Math.floor(Math.random() * 245)
+                numList.push(randomNum)
+              }
+              return numList
+            }
+            let numArr = createArray(30)
+            // console.log(numArr);
+
+            let changed = 0
+            let comparNum = 0
+            let leftIndex = 0
+            let rightIndex = numArr.length - 1
+
+            while (leftIndex < rightIndex) {
+              let swapped = false
+              for (let i = leftIndex + 1; i <= rightIndex; i++) {
+                comparNum++
+                if (numArr[i - 1] > numArr[i]) {
+                  let temp = numArr[i - 1]
+                  numArr[i - 1] = numArr[i]
+                  numArr[i] = temp
+                  changed++
+                  swapped = true
+                }
+              }
+              rightIndex--
+              if (!swapped) break
+              swapped = false
+              for (let i = rightIndex; i > leftIndex; i--) {
+                comparNum++
+                if (numArr[i - 1] > numArr[i]) {
+                  let temp = numArr[i - 1]
+                  numArr[i - 1] = numArr[i]
+                  numArr[i] = temp
+                  changed++
+                  swapped = true
+                }
+              }
+              leftIndex++
+              if (!swapped) break
+            }
+
+            document.write(numArr)
+            console.log(changed);
+            console.log(comparNum);
+          </script>
+          <style>
+            div {
+              font-size: 20px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
