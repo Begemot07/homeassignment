@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 4</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Objects. Class.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 3</h3>
+          <p class="page__text-task">
+            <br>Розробити клас Baner
+
+            <br> Поля
+            <br> Масив об’єктів ( графічних зображень та посилань на сайти)
+
+            <br> методи
+            <br> Метод випадкового вибору об’єкта (графічного зображення та посилання)
+            <br> Метод виведення випадкового банера
+
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок: Press F12
+          </p>
+
+          <script>
+            class Baner {
+              constructor(objList) {
+                this.objList = objList
+              }
+              randomImageAndLink() {
+                let numRange = this.objList.length
+                return Math.floor(Math.random() * numRange)
+              }
+              printBanner() {
+                let num = this.randomImageAndLink()
+                let link = this.objList.imgSrc
+                document.write(`<a target='_blanc' href="${this.objList[num].link}"><img src="${this.objList[num].imgSrc}" alt="Image"></a> `)
+              }
+            }
+            let bannerList = [
+
+              {
+                imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ95iC8qBIjwLd9eGzfxskNS7nJkV5vsq1HNg&s',
+                link: 'https://www.ukr.net/',
+              },
+              {
+                imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4kkwlT4r8hmO6HPzJw5Kj046yEtEjFa23Tw&s',
+                link: 'https://www.ukr.net/',
+              },
+              {
+                imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuxNRKW53yk-7EKjY7bJRb9rQx16XK_5PCPw&s',
+                link: 'https://www.ukr.net/',
+              },
+
+            ]
+
+            let banner1 = new Baner(bannerList)
+            banner1.printBanner()
+          </script>
+          <style>
+            div {
+              font-size: 24px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

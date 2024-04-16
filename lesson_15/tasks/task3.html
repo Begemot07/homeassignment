@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 3</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Objects. Class.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 2</h3>
+          <p class="page__text-task">
+            Розробити клас MultChecker для перевірки таблиці множення
+
+            <br> Поля
+            <br> Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+            <br> Кількість правильних відповідей
+            <br> Кількість неправильних відповідей
+
+            <br> Методи
+            <br> Генерування прикладу (метод випадковим чином визначає друге число, перше число
+            фіксоване)
+            <br> Перевірка правильності вказаної відповіді
+            <br> render - виведення інформації про тестування на екран
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок: Press F12
+          </p>
+          <script>
+            class MultChecker {
+              constructor(checkNum, numbersCheck, numOfCorrectAnswer = 0, numOfWrongAnswer = 0,) {
+                this.checkNum = checkNum
+                this.numOfCorrectAnswer = numOfCorrectAnswer
+                this.numOfWrongAnswer = numOfWrongAnswer
+                this.numbersCheck = numbersCheck
+              }
+              getTask() {
+                let listTask = []
+                for (let i = 0; i < this.numbersCheck; i++) {
+                  listTask.push(1 + Math.floor(Math.random() * 9))
+                }
+                return listTask
+              }
+              checkAnswer() {
+                let numSeconList = this.getTask()
+                for (let i = 0; i < numSeconList.length; i++) {
+                  let num = numSeconList[i]
+                  let answer = parseInt(prompt(`Result ${num} * ${this.checkNum}=`, 21))
+                  let checkAnswer = num * this.checkNum
+                  if (answer === checkAnswer) {
+                    this.numOfCorrectAnswer++
+                  } else this.numOfWrongAnswer++
+                }
+                return `${this.numOfCorrectAnswer}, ${this.numOfWrongAnswer}`
+              }
+              render() {
+                this.getTask()
+                this.checkAnswer()
+                return alert(` correct - ${this.numOfCorrectAnswer}, wrong- ${this.numOfWrongAnswer}`)
+              }
+            }
+
+            let res = new MultChecker(4, 6)
+            console.log(res.render());
+          </script>
+
+          <style>
+            div {
+              font-size: 24px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

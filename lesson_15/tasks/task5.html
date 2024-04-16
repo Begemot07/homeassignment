@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 5</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Objects. Class.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 2</h3>
+          <p class="page__text-task">
+            Створити об’єкт «Авто».
+            <br> Авто
+            <br> Поля(властивості)
+
+            <br> Марка
+            <br> Розмір бака
+            <br> Кількість наявних літрів
+            <br> Кількість місць
+            <br> Кількість пасажирів
+
+            <br> Методи (дії)
+
+            <br> Заправка на вказану кількість літрів
+            <br> Виведення кількості пасажирів
+            <br> Додавання пасажирів
+            <br> Висадка пасажирів
+
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок: Press F12
+          </p>
+
+          <script>
+            class Car {
+              constructor(brand, tankCapacity, currFuelLiters, seatsNumbers, passangerNum) {
+                this.brand = brand
+                this.tankCapacity = tankCapacity
+                this.currFuelLiters = currFuelLiters
+                this.seatsNumbers = seatsNumbers
+                this.passangerNum = passangerNum
+              }
+              refill(fuel) {
+                if (this.currFuelLiters + fuel > this.tankCapacity)
+                  throw new Error('Недостатньо місця для вказаної кількості палива')
+                this.currFuelLiters += fuel
+              }
+              printNumOfPass() {
+                console.log(this.passangerNum)
+              }
+              addPassgr(pass) {
+                if (this.passangerNum + pass > this.seatsNumbers)
+                  throw new Error('Недостатньо місць')
+                this.passangerNum += pass
+              }
+              landingPassgr(pass) {
+                if (this.passangerNum - pass < 0)
+                  throw new Error('Всі пасажири вийшли вже')
+                this.passangerNum -= pass
+              }
+            }
+            let car1 = new Car('Renault', 68, 40, 5, 3)
+            car1.printNumOfPass()
+            car1.addPassgr(2)
+            car1.printNumOfPass()
+            car1.refill(5)
+            console.table(car1)
+
+          </script>
+          <style>
+            div {
+              font-size: 24px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

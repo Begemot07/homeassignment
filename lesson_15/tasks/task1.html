@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 0</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Objects. Class.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 0</h3>
+          <p class="page__text-task">
+            Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція
+            знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між
+            заданими мінімальним і максимальних значенням.
+            Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок: Press F12
+          </p>
+          <script>
+            const numObj1 = {
+              listNum: [2, 4, 6, 8],
+              getSum: function () {
+                return this.listNum.reduce((acc, num) => acc + num)
+              }
+            }
+            const numObj2 = {
+              listNum: [1, 3, 5, 7],
+              getMult: function (min, max) {
+                return this.listNum.reduce((prev, el) => el > min && el < max ? prev * el : prev, 1)
+              }
+            }
+            // знаходження суми
+            let sumByObj1 = numObj1.getSum()
+            let sumByObj2 = numObj1.getSum.call(numObj2)
+            let sumByObj2Apply = numObj1.getSum.apply(numObj2)
+
+            console.log(sumByObj1)
+            console.log(sumByObj2)
+            console.log(sumByObj2Apply)
+
+
+            // знаходження добутку
+            let multByObj2 = numObj2.getMult(2, 5)
+            let multByObj1Call = numObj2.getMult.call(numObj1, 1, 4)
+            let multByObj1Apply = numObj2.getMult.apply(numObj1, [1, 4])
+
+            console.log(multByObj2)
+            console.log('call', multByObj1Call)
+            console.log('apply', multByObj1Apply)
+          </script>
+
+          <style>
+            div {
+              font-size: 24px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

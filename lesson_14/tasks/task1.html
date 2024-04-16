@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 1</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Objects</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 1</h3>
+          <p class="page__text-task">
+            Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+
+            <br>
+            ----- Властивості ------
+
+            <br>*назва компанії на час розробки (назву періодично змінюють)
+            <br>*власник компанії
+            <br>*споснсори (масив спонсорів)
+            <br>* прізвище спонсора
+            <br>* ім’я спонсора
+
+            <br>* сума вкладень спонсора
+
+            рік випуску
+            вартість сайту
+            Знайти:
+
+            <br> 1) загальну вартість усіх сайтів
+
+            <br>2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+
+            <br>3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+
+            <br>4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто
+            зібрати усі у масив)
+
+            <br>5) знайти рік, коли прибуток був найбільшим
+
+            <br>6) упорядкувати список за спаданням прибутку
+
+            <br> 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до
+            10000 і більше 10000
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок: Press F12
+          </p>
+          <script>
+            let caseList = [
+              {
+                company: 'One',
+                owner: 'John Rock',
+                sponsors: [
+                  {
+                    firstName: 'Olga',
+                    secondName: 'Hawk',
+                    investment: 10000,
+                  },
+                  {
+                    firstName: 'Petro',
+                    secondName: 'Magpy',
+                    investment: 1076
+                  },
+                  {
+                    firstName: 'Jack',
+                    secondName: 'Black',
+                    investment: 9800
+                  },],
+                graduationYear: 2007,
+                costSite: 15000
+              },
+              {
+                company: 'Two',
+                owner: 'Juli Falcon',
+                sponsors: [
+                  {
+                    firstName: 'Dany',
+                    secondName: 'Red',
+                    investment: 9870
+                  },
+                  {
+                    firstName: 'Antony',
+                    secondName: 'Shorty',
+                    investment: 1876
+                  },
+                  {
+                    firstName: 'Lionel',
+                    secondName: 'Shyvyi',
+                    investment: 945
+                  },],
+                graduationYear: 2015,
+                costSite: 4389
+              },
+              {
+                company: 'Three',
+                owner: 'Alla Goldberg',
+                sponsors: [
+                  {
+                    firstName: 'Sam',
+                    secondName: 'Rude',
+                    investment: 3456
+                  },
+                  {
+                    firstName: 'Victoria',
+                    secondName: 'Hawk',
+                    investment: 5678
+                  },
+                  {
+                    firstName: 'Sean',
+                    secondName: 'Braun',
+                    investment: 7659
+                  },],
+                graduationYear: 2021,
+                costSite: 6700
+              },
+            ]
+
+            //Find загальну вартість усіх сайтів
+            let priceOfCase = caseList.reduce((prevPrice, price) => prevPrice + price.costSite, 0)
+            console.log(priceOfCase);
+
+            // 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+            let siteBetweenYers = caseList.reduce((count, site) => site.graduationYear > 2000 && site.graduationYear < 2009 ? count + 1 : count, 0)
+            console.log(siteBetweenYers);
+
+            // 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+            let investGreater100000 = caseList.reduce((count, site) => site.sponsors.reduce((a, e) => a + e.investment, 0) > 100000 ? count + 1 : count, 0)
+            console.log(investGreater100000);
+
+
+            // 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+            let listOfSponsors = caseList.map(e => e.sponsors.map(e => `${e.firstName} ${e.secondName}`))
+            listOfSponsors = listOfSponsors.flat()
+            console.log(listOfSponsors);
+
+            // 5) знайти рік, коли прибуток був найбільшим
+            let yearBestProfit = (list) => {
+              let listOfInvestment = list.map(caseNum => caseNum.sponsors.reduce((prevSum, sponsors) => prevSum + sponsors.investment, 0))
+              let index = listOfInvestment.indexOf(Math.max(...listOfInvestment))
+              return list[index].graduationYear
+            }
+            console.log(yearBestProfit(caseList));
+
+            // 6) упорядкувати список за спаданням прибутку
+
+            function sortByProfit(list) {
+              let res = list.sort((inv1, inv2) => {
+                let firstInvest = inv1.sponsors.reduce((sum, obj) => sum + obj.investment, 0)
+                let secondInvest = inv2.sponsors.reduce((sum, obj) => sum + obj.investment, 0)
+                return secondInvest - firstInvest
+              })
+              return res
+            }
+            console.log(sortByProfit(caseList));
+
+            // 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+            let less10000 = caseList.filter(obj => obj.costSite < 10000)
+            let more10000 = caseList.filter(obj => obj.costSite > 10000)
+            console.log(less10000)
+            console.log(more10000);;
+          </script>
+
+          <style>
+            div {
+              font-size: 24px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

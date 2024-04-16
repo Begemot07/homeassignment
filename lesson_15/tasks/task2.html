@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 1</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Objects. Class.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 1</h3>
+          <p class="page__text-task">
+            Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць
+            і 0 в іншому випадку.
+
+            Тир
+
+            Поля(властивості)
+            Масив, у якому зберігається поле з зайцями
+
+            Методи (дії)
+            Метод пострілу (задається позиція пострілу)
+            Виведення ігрового поля
+
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок: Press F12
+          </p>
+          <script>
+            const shootingGallery = {
+              targetsList: [0, 1],
+              shot: function (shotNum) {
+                let targets = this.targetsList
+                if (targets[shotNum] === 1) {
+                  return alert('Попав')
+                } else alert('Промах')
+              },
+              printGameField: function () {
+                document.write(`[${this.targetsList}]`)
+              }
+            }
+            let shot = prompt('Shot', '1')
+            shootingGallery.shot(shot)
+            shootingGallery.printGameField()
+          </script>
+
+          <style>
+            div {
+              font-size: 24px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
