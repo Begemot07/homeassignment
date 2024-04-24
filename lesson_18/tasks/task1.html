@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 1</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Window. BOM. DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 1</h3>
+          <p class="page__text-task">
+            1. Розробити калькулятор
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="input-wrap">
+
+            <label for="first-num">Перше число
+              <input type="number" id="first-num">
+            </label>
+
+            <label for="second-num">Друге число
+              <input type="number" id="second-num">
+            </label>
+          </div>
+
+          <div class="btn-wrap">
+            <button class="btn" id="addition">Додати</button>
+            <button class="btn" id="subtraction">Відняти</button>
+            <button class="btn" id="division">Поділити</button>
+            <button class="btn" id="multiplication">Помножити</button>
+
+          </div>
+
+          <div class="input-wrap">
+            <label for="result">Результат
+              <input id="result" type="number" value="0" disabled>
+
+            </label>
+          </div>
+          <script>
+            function actionFunc(action) {
+              const result = document.getElementById('result')
+              const firstNum = parseFloat(document.getElementById('first-num').value);
+              const secondNum = parseFloat(document.getElementById('second-num').value);
+              if (isNaN(firstNum) || isNaN(secondNum)) throw new Error('wrong value')
+              else result.value = action(firstNum, secondNum)
+            }
+            let addAction = (a, b) => a + b
+            let subsAction = (a, b) => a - b
+            let divAction = (a, b) => a / b
+            let multAction = (a, b) => a * b
+
+            window.onload = function () {
+              document.getElementById('addition').onclick = () => actionFunc(addAction)
+              document.getElementById('subtraction').onclick = () => actionFunc(subsAction)
+              document.getElementById('division').onclick = () => actionFunc(divAction)
+              document.getElementById('multiplication').onclick = () => actionFunc(multAction)
+            }
+          </script>
+
+          <style>
+            #result:disabled {
+              color: #FFFF00;
+            }
+
+            .btn-wrap {
+              display: flex;
+              justify-content: center;
+              gap: 15px;
+              flex-wrap: wrap;
+              margin-bottom: 25px;
+            }
+
+            .btn {
+              background: #FFFF00;
+              color: #000;
+              padding: 5px 10px;
+              display: inline-block;
+            }
+
+            .btn:hover {
+              background: #00FF00;
+            }
+
+            .btn:active {
+              background: #FF0000;
+            }
+
+            .input-wrap {
+              margin-bottom: 20px;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 15px;
+              justify-content: center;
+              align-items: center;
+            }
+
+            input {
+              max-width: 150px;
+              height: 45px;
+              padding: 5px 7px;
+              background-color: #404040;
+              ;
+            }
+
+            div {
+              font-size: 20px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

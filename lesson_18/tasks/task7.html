@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 7</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Window. BOM. DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 7</h3>
+          <p class="page__text-task">
+            Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів
+            транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід,
+            вечеря – checkbоx) та одного з 3-х гідів(використати - radio buttons). Ціни визначте
+            самі. Підрахувати загальну вартість.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="travel">
+
+            <div class="transport section-items">
+              <h2>Транспорт</h2>
+              <select name="transport" id="transport-id">
+                <option value="2200">Автобус</option>
+                <option value="1890">Потяг</option>
+                <option value="2600">Літак</option>
+              </select>
+            </div>
+
+            <h2>Харчування</h2>
+
+            <div class="food section-items">
+
+              <div class="food ">
+                <label for="breakfast">
+                  Сніданок
+                  <input type="checkbox" id="breakfast" value="100">
+                </label>
+                <label for="dinner">
+                  Обід
+                  <input type="checkbox" id="dinner" value="150" checked>
+                </label>
+                <label for="vestine">
+                  Вечеря
+                  <input type="checkbox" id="vestine" value="220">
+                </label>
+              </div>
+            </div>
+
+            <div class="guide section-items">
+              <h2>Вибір гіду</h2>
+
+              <div class="guide-item">
+                <input type="radio" id="guide1" name="guide" value="360">
+                <label for="guide1">Микола</label>
+              </div>
+
+              <div class="guide-item">
+                <input type="radio" id="guide2" name="guide" value="380" checked>
+                <label for="guide2">Надія</label>
+              </div>
+
+              <div class="guide-item">
+                <input type="radio" id="guide3" name="guide" value="430">
+                <label for="guide3">Вікторія</label>
+              </div>
+            </div>
+
+            <button>Підрахуватити</button>
+
+            <div>
+              Загальна вартість <span class="result">0</span>
+            </div>
+          </div>
+          <script>
+            function totalSum() {
+
+              let transportValue = document.querySelector('#transport-id').value
+
+              let foodList = document.querySelectorAll('input[type="checkbox"]')
+              let foodSum = [].reduce.call(foodList, ((acc, curr) => curr.checked ? acc + parseFloat(curr.value) : acc), 0)
+
+              let guideList = document.querySelectorAll('input[type="radio"]')
+              let guideCost = [].reduce.call(guideList, ((acc, curr) => curr.checked ? acc + parseFloat(curr.value) : acc), 0)
+
+              document.querySelector('.result').textContent = parseFloat(foodSum) + parseFloat(transportValue) + parseFloat(guideCost)
+            }
+            window.onload = function () {
+              document.querySelector('button').onclick = totalSum
+            }
+          </script>
+
+          <style>
+            .wrapp {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 20px;
+              text-transform: uppercase;
+            }
+
+            .food {
+              display: flex;
+              gap: 20px;
+            }
+
+            h2 {
+              font-size: 26px;
+              margin-bottom: 25px;
+              color: #FFFF00;
+            }
+
+            .section-items {
+              margin-bottom: 30px;
+            }
+
+            .result {
+              color: #00FF00;
+            }
+
+            .guide-item {
+              display: flex;
+              gap: 20px;
+              margin-bottom: 15px;
+            }
+
+            button {
+              margin-bottom: 20px;
+              background: #FFFF00;
+              color: #000;
+              padding: 5px 10px;
+              display: inline-block;
+            }
+
+            button:hover {
+              background: #00FF00;
+            }
+
+            button:active {
+              background: #FF0000;
+            }
+
+            div {
+              font-size: 20px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
