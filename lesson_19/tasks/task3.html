@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 3</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 3</h3>
+          <p class="page__text-task">
+            Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість
+            елементів у списку випадкова від 1 до 10, елементи випадкові – від 1 до 100). При
+            натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у
+            зелений колір, інші у червоний.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+
+
+          </div>
+
+          <script>
+            function generateRandomList() {
+              let box = document.querySelector('.box')
+              for (let i = 0; i < 5; i++) {
+                let listOl = document.createElement('ol')
+                box.append(listOl)
+                let randNumElements = 1 + Math.floor(Math.random() * 10)
+
+                for (let i = 0; i < randNumElements; i++) {
+                  let liEl = document.createElement("li")
+                  let randNum = 1 + Math.floor(Math.random() * 100)
+                  liEl.innerText = randNum
+                  listOl.append(liEl)
+                }
+              }
+              let btn = document.createElement('button')
+              btn.innerText = 'Magic'
+              box.append(btn)
+              btn.onclick = magic
+            }
+            generateRandomList()
+
+            function magic() {
+              let olList = document.querySelectorAll('ol')
+              for (const ol of olList) {
+                if (ol.children.length % 2 === 0) {
+                  Array.prototype.forEach.call(ol.children, li => li.style.backgroundColor = 'green')
+                } else {
+                  let liList = [...ol.children];
+                  let index = liList.length - 1;
+                  setInterval(() => {
+                    if (index >= 0) {
+                      liList[index].style.backgroundColor = 'red';
+                    }
+                    index--
+                  }, 100);
+                }
+              }
+            }
+          </script>
+
+          <style>
+            button:hover {
+              background-color: #dcdbdb;
+              color: #0c5000;
+            }
+
+            button:active {
+              box-shadow: none;
+              background-color: #00669d;
+              color: #1911ff;
+              text-shadow: 1px 1px 3px#b8b9ff;
+            }
+
+            button {
+              font-weight: 700;
+              background-color: #fff;
+              align-self: center;
+              padding: 10px 20px;
+              border-radius: 7px;
+              box-shadow: 1px 2px 2px 1px #606060;
+              transition: all 0.3s;
+            }
+
+            div {
+              font-size: 20px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+
+            ol {
+              margin-bottom: 15px;
+              border: 2px dotted #8e8e8e59;
+              padding: 5px;
+              border-radius: 4px;
+
+            }
+
+            li {
+              padding: 5px;
+              background-color: #00aaff43;
+              margin-bottom: 2px;
+              color: #fff;
+              border-radius: 50%;
+              text-align: center;
+            }
+
+            .box {
+              display: flex;
+              justify-content: start;
+              align-items: flex-end;
+              gap: 25px;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

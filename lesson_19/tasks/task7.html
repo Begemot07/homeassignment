@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 7</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 7</h3>
+          <p class="page__text-task">
+            Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0) і з
+            випадковою швидкістю рухається вниз (у setInterval викликати метод, у якому додавати
+            крок до top). Як тільки сніжинка досягає нижньої частини екрану (top>maxTop) вона знову
+            повинна з’явитись у верхній частині екрану (top=0).
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+
+            <div class="snowflake">Сніжинка</div>
+          </div>
+
+          <script>
+            function moveFn() {
+              let snowflake = document.querySelector('.snowflake')
+              let rect = snowflake.getBoundingClientRect();
+              let top = rect.top
+              let maxTop = window.innerHeight
+              let randSpeed
+              let inteval = setInterval(() => {
+                randSpeed = 1 + Math.floor(Math.random() * 10)
+                top += 1 + randSpeed;
+                snowflake.style.top = top + 'px'
+                if (top >= maxTop) {
+                  top = 0
+                }
+              }, 100);
+            }
+            moveFn()
+          </script>
+
+          <style>
+            body {
+              position: relative;
+              overflow: hidden;
+            }
+
+            .box {}
+
+            .snowflake {
+              color: rgb(52, 103, 155);
+              font-size: 30px;
+              font-weight: 700;
+              border: 1px solid #b3d2ec;
+              display: inline-block;
+              padding: 10px;
+              border-radius: 3px;
+              position: absolute;
+              left: 0;
+              top: 0;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

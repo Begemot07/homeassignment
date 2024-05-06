@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 6</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 6</h3>
+          <p class="page__text-task">
+            Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у
+            змаганні. При цьому є два стовпці. В одному відображені всі спортсмени, в іншому –
+            список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у
+            список для змагань. При натисканні на червону стрілку спортсмен переміщається у
+            загальний список.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+
+            <div>
+              <h2>Претенденти</h2>
+              <ul class="list contenders">
+                <li class="list__item item ">
+                  <h4 class="item__title">Olga</h4>
+                  <button class="item__button">↔</button>
+                </li>
+                <li class="list__item item">
+                  <h4 class="item__title">Ivan</h4>
+                  <button class="item__button">↔</button>
+                </li>
+                <li class="list__item item">
+                  <h4 class="item__title">Lolita</h4>
+                  <button class="item__button">↔</button>
+                </li>
+                <li class="list__item item">
+                  <h4 class="item__title">Jack</h4>
+                  <button class="item__button">↔</button>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2>Команда</h2>
+              <ul class="list team">
+                <li class="list__item item ">
+                  <h4 class="item__title">Margo</h4>
+                  <button class="item__button item__button--red">↔</button>
+                </li>
+                <li class="list__item item">
+                  <h4 class="item__title">Viktoria</h4>
+                  <button class="item__button item__button--red">↔</button>
+                </li>
+                <li class="list__item item">
+                  <h4 class="item__title">Nina</h4>
+                  <button class="item__button item__button--red">↔</button>
+                </li>
+                <li class="list__item item">
+                  <h4 class="item__title">Lisa</h4>
+                  <button class="item__button item__button--red">↔</button>
+                </li>
+              </ul>
+            </div>
+            </article>
+          </div>
+
+          <script>
+            let box = document.querySelector('.box')
+            box.addEventListener('click', choiceParticipants)
+
+
+            function choiceParticipants(e) {
+              let btnClick = e.target
+
+              let contendersList = document.querySelector('.contenders')
+              let teamList = document.querySelector('.team')
+
+              if (btnClick.closest('.item__button')) {
+
+                if (contendersList.contains(btnClick)) {
+                  let liContenders = btnClick.closest('.item')
+                  let liTeam = liContenders.cloneNode(true)
+                  teamList.append(liTeam)
+                  let btn = liTeam.querySelector('.item__button')
+                  btn.classList.add('item__button--red')
+                  liContenders.remove()
+                  console.log(liContenders);
+                }
+                if (teamList.contains(btnClick)) {
+                  let liTeam = btnClick.closest('.item')
+                  let liContenders = liTeam.cloneNode(true)
+                  contendersList.append(liContenders)
+                  let btn = liContenders.querySelector('.item__button')
+                  btn.classList.remove('item__button--red')
+                  liTeam.remove()
+                  console.log(liTeam);
+                }
+              }
+            }
+
+          </script>
+
+          <style>
+            h2 {
+              font-size: 24px;
+              margin-bottom: 15px;
+              text-align: center;
+              color: #8af66b;
+              font-weight: 700;
+            }
+
+            .list {
+              border: 1px solid #ffffff;
+            }
+
+            div {
+              font-size: 18px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+
+            .box {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+              gap: 25px;
+            }
+
+            .item {
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              padding: 5px;
+              transition: all 0.3s;
+              border: 4px solid transparent;
+              justify-content: space-between;
+              border: 1px solid #2c2c2c;
+              background-color: #555555;
+            }
+
+
+
+            .item__title a:hover {
+              text-decoration: underline;
+            }
+
+            .item__price {
+              color: #0000FF;
+            }
+
+
+            .item__button {
+              color: green;
+              font-weight: 700;
+              background-color: #fff;
+              padding: 0px 5px;
+              border-radius: 50%;
+              font-size: 24px;
+            }
+
+
+            .item__button:hover {
+              color: green;
+              font-weight: 700;
+              background-color: #8af66b;
+              padding: 0px 5px;
+              border-radius: 50%;
+              font-size: 24px;
+            }
+
+            .item__button--red {
+              color: red;
+            }
+
+            .item__button--red:hover {
+              color: red;
+              background-color: #f66b6b;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

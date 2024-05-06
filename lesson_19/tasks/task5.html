@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 5</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 5</h3>
+          <p class="page__text-task">
+            Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену
+            рамку (при кліку робити toogle з класом вибраного елемента)
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+
+            <article class="item">
+              <a href="#" class="item__link">
+                <img src="../img/logo.jpg" alt="Image">
+              </a>
+              <h3 class="item__title"><a href="#">Title title</a></h3>
+
+              <div class="item__price">22900</div>
+            </article>
+
+            <article class="item">
+              <a href="#" class="item__link">
+                <img src="../img/logo.jpg" alt="Image">
+              </a>
+              <h3 class="item__title"><a href="#">Title title</a></h3>
+
+              <div class="item__price">22900</div>
+            </article>
+
+            <article class="item">
+              <a href="#" class="item__link">
+                <img src="../img/logo.jpg" alt="Image">
+              </a>
+              <h3 class="item__title"><a href="#">Title title</a></h3>
+
+              <div class="item__price">22900</div>
+            </article>
+          </div>
+
+          <script>
+            let box = document.querySelector('.box')
+            box.addEventListener('click', (e) => {
+              let item = e.target
+              let itemArticle = item.closest('.item')
+              itemArticle.classList.toggle('item-border')
+            })
+          </script>
+
+          <style>
+            div {
+              font-size: 18px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+
+            .box {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+              gap: 25px;
+            }
+
+            .item {
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+              padding: 10px;
+              transition: all 0.3s;
+              border: 4px solid transparent;
+            }
+
+            .item-border {
+              border: 4px solid green;
+
+            }
+
+            .item:hover {
+              box-shadow: inset 0px 0px 27px 3px #0000FF;
+              border-radius: 40px;
+            }
+
+            .item__link {
+              max-width: 100%;
+              overflow: hidden;
+              border-radius: 30%;
+            }
+
+            .item__link img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: transform 0.3s;
+            }
+
+            .item__link img:hover {
+              transform: scale(1.1);
+            }
+
+            .item__title {
+              font-size: 24px;
+              font-weight: 700;
+              color: #FFFF00;
+            }
+
+            .item__title a:hover {
+              text-decoration: underline;
+            }
+
+            .item__price {
+              color: #0000FF;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

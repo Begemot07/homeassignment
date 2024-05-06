@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 1</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 1</h3>
+          <p class="page__text-task">
+            Дано 10 рядків тексту «Hello!» у окремих div. При кліку на якийсь із них усі наступні
+            повинні бути зафарбовані у червоний колір.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+
+            <div class="item">hello1</div>
+
+            <div class="item">hello2</div>
+
+            <div class="item">hello3</div>
+
+            <div class="item">hello4</div>
+
+            <div class="item">hello5</div>
+
+            <div class="item">hello6</div>
+
+            <div class="item">hello7</div>
+
+            <div class="item">hello8</div>
+
+            <div class="item">hello9</div>
+
+            <div class="item">hello10</div>
+          </div>
+
+          <script>
+            function clickDiv() {
+              let thisDiv = this
+              let nextDiv = thisDiv.nextElementSibling
+              while (nextDiv !== null) {
+                thisDiv.style.color = 'green'
+                nextDiv.style.color = 'red'
+                nextDiv = nextDiv.nextElementSibling
+              }
+              let prevDiv = thisDiv.previousElementSibling
+              while (prevDiv !== null) {
+                thisDiv.style.color = 'green'
+                prevDiv.style.color = 'white'
+                prevDiv = prevDiv.previousElementSibling
+              }
+            }
+            window.onload = function () {
+              const divList = document.querySelector('.box').children
+              Array.prototype.forEach.call(divList, e => e.onclick = clickDiv)
+            }
+
+          </script>
+
+          <style>
+            div {
+              font-size: 20px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

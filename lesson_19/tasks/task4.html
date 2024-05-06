@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 4</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 4</h3>
+          <p class="page__text-task">
+            Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь
+            із клітинок, то до відповідної таблиці додається червона рамка (спробуйте додати
+            можливість відображення кількості кліків біля назви таблиці з використанням відповідно
+            доданого для цього атрибута).
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+            <table id="table1">
+              <caption>Table 1</caption>
+              <tr>
+                <td>256</td>
+                <td>33</td>
+                <td>444</td>
+              </tr>
+              <tr>
+                <td>55</td>
+                <td>24</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td>89</td>
+                <td>4</td>
+                <td>43</td>
+              </tr>
+            </table>
+            <table id="table2">
+              <caption>Table 2</caption>
+              <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>65</td>
+                <td>9</td>
+                <td>74</td>
+              </tr>
+              <tr>
+                <td>569</td>
+                <td>65</td>
+                <td>465</td>
+              </tr>
+            </table>
+            <table id="table3">
+              <caption>Table 3</caption>
+              <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>467</td>
+              </tr>
+              <tr>
+                <td>55</td>
+                <td>6</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td>894</td>
+                <td>407</td>
+                <td>43</td>
+              </tr>
+            </table>
+
+          </div>
+
+          <script>
+            let counter1 = 0
+            let counter2 = 0
+            let counter3 = 0
+            function setBorderRed(e) {
+              let clickedEl = e.target
+              if (clickedEl.tagName === 'TD') {
+                let tableEl = clickedEl.closest('table')
+                tableEl.style.border = '2px solid #ff0000'
+              }
+              if (clickedEl.closest('#table1')) {
+                let table1 = clickedEl.closest('#table1')
+                let caption = table1.childNodes[1]
+                caption.innerText = `Table 1. Clicks: ${++counter1}`
+              }
+              if (clickedEl.closest('#table2')) {
+                let table2 = clickedEl.closest('#table2')
+                let caption = table2.childNodes[1]
+                caption.innerText = `Table 2. Clicks: ${++counter2}`
+              }
+              if (clickedEl.closest('#table3')) {
+                let table3 = clickedEl.closest('#table3')
+                let caption = table3.childNodes[1]
+                caption.innerText = `Table 3. Clicks: ${++counter3} `
+              }
+            }
+            let box = document.querySelector('.box')
+            box.addEventListener('click', setBorderRed)
+          </script>
+
+          <style>
+            button:hover {
+              background-color: #dcdbdb;
+              color: #0c5000;
+            }
+
+            button:active {
+              box-shadow: none;
+              background-color: #00669d;
+              color: #1911ff;
+              text-shadow: 1px 1px 3px#b8b9ff;
+            }
+
+            button {
+              font-weight: 700;
+              background-color: #fff;
+              align-self: center;
+              padding: 10px 20px;
+              border-radius: 7px;
+              box-shadow: 1px 2px 2px 1px #606060;
+              transition: all 0.3s;
+            }
+
+            div {
+              font-size: 18px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+
+            table,
+            td {
+              border: 2px dotted #8e8e8e59;
+              padding: 5px;
+              border-radius: 4px;
+              text-align: center;
+            }
+
+
+
+            .box {
+              display: flex;
+              gap: 25px;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

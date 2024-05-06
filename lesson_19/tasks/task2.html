@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 2</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 2</h3>
+          <p class="page__text-task">
+            Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично
+            заповнювати інші (усі попередні у спадному порядку(кожен попередній має значення на 1
+            менше за наступний), усі наступні на 1 більше (кожен наступне на 1 більше за
+            попереднього)
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+
+            <input class="inp-style" type="number" id="inp1">
+            <input class="inp-style" type="number" id="inp2">
+            <input class="inp-style" type="number" id="inp3">
+            <input class="inp-style" type="number" id="inp4">
+            <input class="inp-style" type="number" id="inp5">
+          </div>
+
+          <script>
+
+            const divBox = document.querySelector('.box')
+            divBox.addEventListener('input', autoFillNum)
+            function autoFillNum(e) {
+              let el = e.target
+              let nextEl = el.nextElementSibling
+              while (nextEl !== null) {
+                nextEl.value = parseInt(nextEl.previousElementSibling.value) + 1
+                nextEl = nextEl.nextElementSibling
+              }
+              let prevEl = el.previousElementSibling
+              while (prevEl !== null) {
+                prevEl.value = parseInt(prevEl.nextElementSibling.value) - 1
+                prevEl = prevEl.previousElementSibling
+              }
+            }
+
+          </script>
+
+          <style>
+            div {
+              font-size: 20px;
+              overflow: auto;
+            }
+
+            .inp-style {
+              padding: 10px 10px;
+              max-width: 150px;
+            }
+
+            .box {
+              display: flex;
+              gap: 15px;
+              flex-direction: column;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
