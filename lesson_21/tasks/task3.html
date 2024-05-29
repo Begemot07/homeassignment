@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 3</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Inheritance. DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 3</h3>
+          <p class="page__text-task">
+            <img src="../img/task3.png" alt="Image" width="400">
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+
+          </div>
+
+          <div class="field">
+          </div>
+
+
+          <style>
+            .field {
+              width: 400px;
+              height: 400px;
+              background-color: #fff;
+              margin: 40px auto;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .image {
+              width: 50px;
+              height: 50px;
+              position: absolute;
+              top: 0;
+              left: 0;
+              /* transform: translate(-50%, -50%); */
+              transition: all 1.3s;
+            }
+
+            strong {
+              color: #404040;
+              font-size: 24px;
+            }
+
+            input {
+              max-width: 250px;
+              height: 45px;
+              padding: 5px 7px;
+              background-color: #404040;
+              color: wheat;
+              border-radius: 3px;
+            }
+
+            div {
+              font-size: 20px;
+              /* overflow: auto; */
+            }
+
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+          <script>
+
+            // class House {
+            //   constructor(left, top, pathToImg, interval, blockSelector) {
+            //     this.left = left ?? 0
+            //     this.top = top ?? 0
+            //     this.src = pathToImg
+            //     this.interval = interval
+            //     this.block = document.querySelector(blockSelector)
+            //     this.el = this.render()
+            //   }
+
+            //   render() {
+            //     let img = document.createElement('img')
+            //     img.src = this.src
+            //     img.className = 'image'
+            //     img.style.left = `${this.left}%`
+            //     img.style.top = `${this.top}%`
+            //     this.block.append(img)
+            //     this.img = img
+            //     return img
+            //   }
+            //   getRandomNum(min = 1, max = 3) {
+            //     return min + Math.floor(Math.random() * (max - min + 1))
+            //   }
+            //   move(min, max) {
+            //     let moveSet = setInterval(() => {
+            //       this.img.style.transform = `scale(${this.getRandomNum(min, max)})`
+            //     }, this.interval)
+            //   }
+            // }
+
+            // const houseImg = new House(40, 20, '../img/home.svg', 1000, '.field')
+            // houseImg.move(0.5, 3)
+            // ======================================================== 
+            // ======================================================== 
+            // ======================================================== 
+            // ======================================================== 
+            class Dog {
+              constructor(left, top, pathToImg, interval, blockSelector) {
+                this.left = left ?? 0
+                this.top = top ?? 0
+                this.src = pathToImg
+                this.interval = interval
+                this.block = document.querySelector(blockSelector)
+                this.el = this.render()
+              }
+
+              render() {
+                let img = document.createElement('img')
+                img.src = this.src
+                img.className = 'image'
+                img.style.left = `${this.left}%`
+                img.style.top = `${this.top}%`
+                this.block.append(img)
+                this.img = img
+                return img
+              }
+              getRandomNum(min = 1, max = 3) {
+                return min + Math.floor(Math.random() * (max - min + 1))
+              }
+              move(min, max) {
+                let moveSet = setInterval(() => {
+                  this.img.style.left = `${this.getRandomNum(min, max)}%`
+                }, this.interval)
+              }
+            }
+            const dog1 = new Dog(0, 50, '../img/dog.svg', 700, '.field')
+            dog1.move(0, 100)
+
+            // ======================================================== 
+            // ======================================================== 
+            // ======================================================== 
+            // ======================================================== 
+            class Bird {
+              constructor(left, top, pathToImg, interval, blockSelector) {
+                this.left = left ?? 0
+                this.top = top ?? 0
+                this.src = pathToImg
+                this.interval = interval
+                this.block = document.querySelector(blockSelector)
+                this.el = this.render()
+              }
+
+              render() {
+                let img = document.createElement('img')
+                img.src = this.src
+                img.className = 'image'
+                img.style.left = `${this.left}%`
+                img.style.top = `${this.top}%`
+                this.block.append(img)
+                this.img = img
+                return img
+              }
+              getRandomNum(min = 1, max = 3) {
+                return min + Math.floor(Math.random() * (max - min + 1))
+              }
+              move(min, max) {
+                let moveSet = setInterval(() => {
+                  this.img.style.left = `${this.getRandomNum(min, max)}%`
+                  this.img.style.top = `${this.getRandomNum(min, max)}%`
+                }, this.interval)
+                this.moveSet = moveSet
+              }
+              stopMove() {
+                clearInterval(this.moveSet)
+              }
+            }
+            const bird1 = new Bird(0, 0, '../img/bird.svg', 700, '.field')
+            bird1.move(0, 100)
+            // bird1.stopMove()
+
+            // ======================================================== 
+            // ======================================================== 
+            // ======================================================== 
+            // ======================================================== 
+            class ElementMovable {
+              constructor(left, top, pathToImg, interval, blockSelector) {
+                this.left = left ?? 0
+                this.top = top ?? 0
+                this.src = pathToImg
+                this.interval = interval
+                this.block = document.querySelector(blockSelector)
+                this.el = this.render()
+              }
+
+              render() {
+                let img = document.createElement('img')
+                img.src = this.src
+                img.className = 'image'
+                img.style.left = `${this.left}%`
+                img.style.top = `${this.top}%`
+                this.block.append(img)
+                this.img = img
+              }
+              getRandomNum(min = 0, max = 100) {
+                return min + Math.floor(Math.random() * (max - min + 1))
+              }
+              move(min, max) {
+                let moveSet = setInterval(() => {
+                  this.img.style.left = `${this.getRandomNum(min, max)}%`
+                  this.img.style.top = `${this.getRandomNum(min, max)}%`
+                }, this.interval)
+              }
+              stopMove() {
+                clearInterval(moveSet)
+              }
+            }
+            class SomeHouse extends ElementMovable {
+              constructor(left, top, pathToImg, interval, blockSelector) {
+                super(left, top, pathToImg, interval, blockSelector)
+              }
+              move(min, max) {
+                let moveSet = setInterval(() => {
+                  this.img.style.transform = `scale(${this.getRandomNum(min, max)})`
+                }, this.interval)
+              }
+            }
+            const hous1 = new SomeHouse(40, 20, '../img/home.svg', 1000, '.field')
+            hous1.move(1, 2)
+          </script>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

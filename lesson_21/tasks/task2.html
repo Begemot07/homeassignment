@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 2</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title"> Inheritance. DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 2</h3>
+          <p class="page__text-task">
+            Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції
+            <br> ● Вивести всіх простих клієнтів;
+            <br> ● Вивести всіх клієнтів GoldenClient;
+            <br> ● Знайти сумарну кількість грошей на рахунку;
+
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+
+          </div>
+
+          <script>
+            class Client {
+              constructor(id, fulName, balance) {
+                this.id = id
+                this.fulName = fulName
+                this.totalMoney = balance
+              }
+              addMoney(amount) {
+                if (amount > 0) this.totalMoney += amount
+                else throw new Error('Сума має бути додатньою')
+              }
+              withdrawMoney(amount) {
+                if (amount <= this.totalMoney && amount > 0) this.totalMoney -= amount
+                else if (amount < 0) throw new Error('Сума має бути додатньою')
+                else throw new Error('Недостатньо коштів на рахунку!')
+              }
+              toString() {
+                return `${this.fulName} (id: ${this.id}): balance - ${this.totalMoney}`
+              }
+            }
+
+            let c1 = new Client(11111, 'John Kramer', 1000)
+            c1.addMoney(500)
+            try {
+              c1.withdrawMoney(200)
+
+            } catch (error) {
+              document.write(error)
+            }
+            // document.write(c1)
+            // ==========================================================================
+            // ==========================================================================
+            // ==========================================================================
+            class GoldenClient extends Client {
+              constructor(id, fulName, balance, creditLimit, percentageCredit) {
+                super(id, fulName, balance)
+                this.creditLimit = creditLimit
+                this.percentageCredit = percentageCredit
+                this.totalMoney = this.totalMoney + this.creditLimit
+              }
+              withdrawMoney(amount) {
+                let totalMoney = this.balance + this.creditLimit
+                if (amount <= this.totalMoney && amount > 0) {
+                  this.totalMoney -= amount
+                }
+                else if (amount < 0) throw new Error('Сума має бути додатньою')
+                else if (amount) throw new Error('Недостатньо коштів на рахунку!')
+              }
+              penalty() {
+                if (this.totalMoney - this.creditLimit < 0) {
+                  let res = (this.creditLimit - this.totalMoney) * this.percentageCredit / 100
+                  return `Нараховано ${res}₴ пені за використання кредитних коштів`
+                } else return 'Немає пені'
+              }
+              toString() {
+                return `${this.fulName} (id: ${this.id})- balance : ${this.totalMoney}₴`
+              }
+            }
+            let cg1 = new GoldenClient(22222, 'John Kramer', 1000, 1000, 2.9)
+
+            /*=======================
+            =======================
+            =======================*/
+            let clientList = [
+              new GoldenClient(11111, 'Alice Johnson', 1500, 1200, 3.2),
+              new GoldenClient(22222, 'Bob Smith', 2000, 1500, 3.5),
+              new GoldenClient(33333, 'Emily Davis', 1800, 1300, 3.0),
+              new GoldenClient(44444, 'Michael Wilson', 2200, 1600, 3.8),
+              new GoldenClient(55555, 'Sophia Martinez', 1700, 1100, 2.7),
+              new GoldenClient(66666, 'David Brown', 1900, 1400, 3.1),
+              new GoldenClient(77777, 'Emma Anderson', 2100, 1700, 3.6),
+              new GoldenClient(88888, 'James Taylor', 2300, 1800, 3.9),
+              new GoldenClient(99999, 'Olivia Thomas', 2000, 1600, 3.3),
+              new GoldenClient(12345, 'William Jackson', 2400, 1900, 4.0),
+              new Client(11112, 'John Kramer', 1000),
+              new Client(11113, 'Alice Johnson', 1200),
+              new Client(11114, 'Bob Smith', 1400),
+              new Client(11115, 'Emily Davis', 1100),
+              new Client(11116, 'Michael Wilson', 1300),
+              new Client(11117, 'Sophia Martinez', 1500),
+              new Client(11118, 'David Brown', 1700),
+              new Client(11119, 'Emma Anderson', 1800),
+              new Client(11120, 'James Taylor', 1600),
+              new Client(11121, 'Olivia Thomas', 1900),
+              new Client(11122, 'William Jackson', 2000),
+              new Client(11123, 'Sophie Harris', 2200)
+            ]
+            let cc1 = new GoldenClient(11111, 'Alice Johnson', 1500, 1200, 3.2)
+            console.log(cc1);
+            class Bank {
+              constructor(list) {
+                this.clientList = list
+              }
+              printClientList() {
+                let olEl = document.createElement('ol')
+                this.clientList.forEach(client => {
+                  if (!client.hasOwnProperty('creditLimit')) {
+                    let liEl = document.createElement('li')
+                    liEl.innerText = client.fulName
+                    olEl.append(liEl)
+                  }
+                });
+                return olEl
+              }
+              printGoldenClientList() {
+                let olEl = document.createElement('ol')
+                this.clientList.forEach(client => {
+                  if (client.hasOwnProperty('creditLimit')) {
+                    let liEl = document.createElement('li')
+                    liEl.innerText = client.fulName
+                    olEl.append(liEl)
+                  }
+                });
+                return olEl
+              }
+              getTotalSumClient() {
+                let divEl = document.createElement('div')
+                let res = this.clientList.reduce((sum, client) => {
+                  if (!client.hasOwnProperty('creditLimit')) {
+                    return sum + client.totalMoney
+                  }
+                  else if (client.hasOwnProperty('creditLimit')) {
+                    return sum + client.totalMoney - client.creditLimit
+                  }
+                }, 0)
+                divEl.innerText = `Сумарна кількість грошей на рахунку: ${res}`
+                return divEl
+              }
+            }
+            let box = document.querySelector('.box')
+            let b1 = new Bank(clientList)
+            box.append(b1.getTotalSumClient())
+          </script>
+
+          <style>
+            strong {
+              color: #404040;
+              font-size: 24px;
+            }
+
+            input {
+              max-width: 250px;
+              height: 45px;
+              padding: 5px 7px;
+              background-color: #404040;
+              color: wheat;
+              border-radius: 3px;
+            }
+
+            div {
+              font-size: 20px;
+              overflow: auto;
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>

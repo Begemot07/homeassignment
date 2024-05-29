@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Task 4</title>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <header class="header header--margin">
+
+        <div class="header__container">
+          <a href="../index.html" class="header__wrap-logo">
+            <img class="header__logo" src="../img/logo.jpg" alt="Image">
+          </a>
+          <h1 class="header__title">Inheritance. DOM.</h1>
+
+        </div>
+      </header>
+
+      <main class="page page--margin">
+
+        <div class="page__container ">
+          <h3 class="page__title-task">Задача 4</h3>
+          <p class="page__text-task">
+            Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не
+            канікули) та оцінку (перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він
+            виправити оцінку (якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх
+            помилок зробити з використанням відповідних класів.
+          </p>
+          <p class="page__text-task page__text-task--blue">
+            Розв'язок:
+          </p>
+
+          <div class="box">
+            <label>
+              Місяць навчання:
+              <input id="month" type="text">
+            </label>
+            <label>
+              Оцінка:
+              <input id="score" type="text">
+            </label>
+          </div>
+          <button id="btnCheck">Check</button>
+          <style>
+            .box {
+              display: flex;
+              gap: 15px;
+              flex-wrap: wrap;
+              align-items: center;
+            }
+
+            label {
+              width: 100%;
+              display: flex;
+              flex-wrap: nowrap;
+              gap: 10px;
+              align-items: center;
+            }
+
+            #btnCheck {
+              margin-top: 20px;
+              background: #404040;
+              padding: 10px 20px;
+              border-radius: 10px;
+              transition: all 0.3s;
+            }
+
+            #btnCheck:hover {
+              margin-top: 20px;
+              background: #b1adad;
+              padding: 10px 20px;
+              border-radius: 10px;
+              color: #404040;
+            }
+
+            strong {
+              color: #404040;
+              font-size: 24px;
+            }
+
+            input {
+              max-width: 250px;
+              width: 100%;
+              height: 45px;
+              padding: 5px 7px;
+              background-color: #404040;
+              color: wheat;
+              border-radius: 3px;
+            }
+
+            div {
+              font-size: 20px;
+              /* overflow: auto; */
+            }
+
+            .page__text-task span {
+              color: #FFFF00;
+            }
+          </style>
+          <script>
+
+            class ValidationError extends Error {
+              constructor(message) {
+                super(message)
+                this.name = 'Validation Error!'
+              }
+            }
+            class MonthError extends ValidationError {
+              constructor(message) {
+                super(message)
+                this.name = 'Month Error!'
+              }
+            }
+
+            class ScoreError extends ValidationError {
+              constructor(message) {
+                super(message)
+                this.name = 'Score Error!'
+              }
+            }
+
+            // ====================================
+            // ====================================
+            // ====================================
+            class CanFixScore {
+              constructor(monthSelecto, scoreSelector) {
+                this.month = document.querySelector(monthSelecto)
+                this.score = document.querySelector(scoreSelector)
+                this.box = document.querySelector('.box');
+              }
+              checkMonth(month) {
+                if (isNaN(month)) {
+                  throw new MonthError('Month must be a number')
+                }
+                if (month.value < 1 || month.value > 12) {
+                  throw new MonthError('Month must be between 1 and 12')
+                }
+                const vacantionMonth = [6, 7, 8]
+                if (vacantionMonth.includes(month)) {
+                  throw new MonthError('It is a vacation month')
+                }
+                return month
+              }
+              checkScore(score) {
+                if (isNaN(score)) throw new ScoreError('Score must be a number')
+
+                if (score < 1 || score > 100) throw new ScoreError('Score must be between 1 and 100')
+                return score
+              }
+              canImproveScore() {
+                return (parseInt(this.month.value) !== 5 && parseInt(this.score.value) < 50)
+              }
+              render() {
+                const divEl = document.createElement('div')
+                this.box.append(divEl)
+                try {
+                  const month = this.checkMonth(parseInt(this.month.value))
+                  const score = this.checkScore(parseInt(this.score.value))
+                  const message = this.canImproveScore() ? 'Зможе' : 'Не Зможе';
+                  divEl.innerText = message
+                } catch (error) {
+                  if (error instanceof ValidationError) {
+                    divEl.innerText = error.message
+                  }
+                  else divEl.innerText = 'An unexpected error occurred'
+                }
+                setTimeout(() => {
+                  divEl.innerText = ''
+                  this.month.value = ''
+                  this.score.value = ''
+                }, 2000)
+              }
+            }
+            const fix1 = new CanFixScore('#month', '#score')
+            window.onload = function () {
+              document.querySelector('#btnCheck').onclick = () => fix1.render()
+            }
+          </script>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">2124</p>
+      </footer>
+    </div>
+
+  </body>
+
+</html>
